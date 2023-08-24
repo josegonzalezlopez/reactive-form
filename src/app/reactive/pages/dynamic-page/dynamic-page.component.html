@@ -19,18 +19,18 @@
     <!-- Agregar Favorito -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Agregar</label>
-        <div class="col-sm-9" formArrayName="favoriteGames">
-            <div class="mb-1" *ngFor="let favorite of favoriteGames.controls; let i = index">
+        <div class="col-sm-9" >
+            <div class="mb-1" >
                <div class="input-group">
                     <input class="form-control"
-                    [formControlName]="i"
+                    
                        placeholder="Agregar favorito">
                     <button class="btn btn-outline-primary"
                         type="button">
                         Agregar favorito
                     </button>
                 </div>  
-                <span *ngIf="isValidFieldInArray(favoriteGames, i)" class="form-text text-danger">
+                <span class="form-text text-danger">
                     Este campo es requerido
                 </span>
             </div>
@@ -41,28 +41,23 @@
     <!-- Lista de Juegos Favoritos -->
     <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Favoritos</label>
-        <div class="col-sm-9">
-
-            <div class="mb-1">
-
+        <div class="col-sm-9" formArrayName="favoriteGames">
+            <div class="mb-1" *ngFor="let favorite of favoriteGames.controls; let i = index">
                 <div class="input-group">
-                    <input class="form-control">
+                    <input class="form-control" [formControlName]="i">
 
                     <button class="btn btn-outline-danger"
+                            (click)="onDeleteFavorite( i )"
                             type="button">
                       Eliminar
                   </button>
                 </div>
-                <span class="form-text text-danger">
+                <span class="form-text text-danger" *ngIf="isValidFieldInArray(favoriteGames, i)" >
                    Este campo es requerido
                 </span>
-
             </div>
-
         </div>
     </div>
-
-
 
     <div class="row">
         <div class="col-sm-12">

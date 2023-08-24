@@ -31,6 +31,10 @@ export class DynamicPageComponent {
     this.myForm.reset();
   }
 
+  onDeleteFavorite( index: number): void{
+    this.favoriteGames.removeAt( index );
+  }
+
   getFieldError(field: string): string|null{
     if(!this.myForm.controls[field]) return null;
     const errors = this.myForm.controls[field].errors || {};
