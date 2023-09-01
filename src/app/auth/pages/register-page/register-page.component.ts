@@ -17,7 +17,9 @@ export class RegisterPageComponent {
     userName: ['', [Validators.required, this.validatorService.cantBeAdmin]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     passwordRepeat: ['', [Validators.required, Validators.minLength(6)]],
-
+  },
+  {
+    validators: [this.validatorService.compareInput('password', 'passwordRepeat')]
   });
 
   constructor(private formBuilder: FormBuilder,
